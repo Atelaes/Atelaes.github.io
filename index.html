@@ -1,7 +1,39 @@
 <html>
 <meta charset="utf-8">
 <head>
-  
+  <style>
+    @import url("jekyll-theme-midnight.scss");
+    body {
+      margin : 10px;
+      /*background-color: dimgrey;
+      color: white;*/
+      }
+    .projectSelector {
+      margin-left: 1px;
+      margin-right: 1px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 1px;
+      border-top: solid black 1px;
+      border-right: solid black 1px;
+      border-left: solid black 1px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
+      }
+
+    .unselectedSelector {
+      background: #202020;
+      border-bottom: solid black 1px;
+      }
+    .psLine {
+      margin: 15px;
+      /*border-bottom: solid black 1px;*/
+      }
+    h1 {text-align: center}
+    .hiddenProject { display: none; }
+    .shownProject { display: block;}
+  </style>
   <script>
     var currentProject = 0;
     function addSelectorEvent() {
@@ -24,9 +56,13 @@
 
     function psClick(e) {
       var currentProjectNumber = currentProject;
+      var currentProjectSelectorId = "ps" + currentProjectNumber;
+      var currentProjectSelector = document.getElementById(currentProjectSelectorId);
+      if (currentProjectSelector) {currentProjectSelector.classList.add("unselectedSelector");}
       var currentProjectName = "projectDisplay" + currentProjectNumber;
       var currentProjectDiv = document.getElementById(currentProjectName);
       currentProjectDiv.className = "hiddenProject";
+      e.target.classList.remove("unselectedSelector");
       var projectTab = e.target.id;
       var idnum = projectTab.substr(-1);
       var targetProjectName = "projectDisplay" + idnum;
@@ -43,12 +79,12 @@
   <h1>Portfolio</h1>
   <div class="psLine">
     <span>Projects: </span>
-    <span class="projectSelector" id="ps1">Scheduler</span>
-    <span class="projectSelector" id='ps2'>Viking</span>
-    <span class="projectSelector" id='ps3'>grc-pronunciation</span>
-    <span class="projectSelector" id='ps4'>Quotations</span>
-    <span class="projectSelector" id='ps5'>Tag Deletion Report</span>
-    <span class="projectSelector" id='ps6'>Purchase Journal Report</span>
+    <span class="projectSelector unselectedSelector" id="ps1">Scheduler</span>
+    <span class="projectSelector unselectedSelector" id='ps2'>Viking</span>
+    <span class="projectSelector unselectedSelector" id='ps3'>Pronunciation</span>
+    <span class="projectSelector unselectedSelector" id='ps4'>Quotations</span>
+    <span class="projectSelector unselectedSelector" id='ps5'>Tag Deletion Report</span>
+    <span class="projectSelector unselectedSelector" id='ps6'>Purchase Journal Report</span>
   </div>
   <div id="projectDisplay0" class="shownProject">
     <br />Click on a tab to view a project.
@@ -3922,7 +3958,7 @@
   </div>
 
   <div id="projectDisplay3" class="hiddenProject">
-    <div><span>Title: </span><span>grc-pronunciation</span></div>
+    <div><span>Title: </span><span>Ancient Greek Pronunciation</span></div>
     <div><span>Language: </span><span>Lua</span></div>
     <div><span>Purpose: </span><span>Converts an Ancient Greek word into IPA characters.</span></div>
     <div><span>Description: </span><span>Takes the spelling of an Ancient Greek word and derives its approximate pronunciation in five major eras of the language.
