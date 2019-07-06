@@ -128,7 +128,7 @@
       '''
 
       # Start by pulling the schedule HTML from the site
-      HDLogin = {'j_storenumber' : '2806', 'j_username' : 'jhl9wf', 'j_password' : 'ha/mazDepos/tum', 'successUrl' : 'https://hdapps.homedepot.com/LaborMgtTools/WFMEssLauncher?language=en_US'}
+      HDLogin = {'j_storenumber' : '2806', 'j_username' : 'username', 'j_password' : 'password', 'successUrl' : 'https://hdapps.homedepot.com/LaborMgtTools/WFMEssLauncher?language=en_US'}
       site = requests.post('https://hdapps.homedepot.com/MYTHDPassport/rs/clientUI/thdLoginRequest', data=HDLogin, timeout=10)
       code = site.text
 
