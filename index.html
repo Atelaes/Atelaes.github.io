@@ -1,5 +1,6 @@
 <html>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
   <style>
     @import url("jekyll-theme-midnight.scss");
@@ -22,6 +23,10 @@
 
       }
 
+    #menuButton {
+      display: none;
+    }
+
     .unselectedSelector {
       background: #202020;
       border-bottom: solid black 1px;
@@ -30,9 +35,71 @@
       margin: 15px;
       /*border-bottom: solid black 1px;*/
       }
-    h1 {text-align: center}
+    .mainHeader {text-align: center;
+      margin:auto;
+      max-width: 300px;
+      line-height: 1.4;
+      }
+    .headerDash {
+      display: none;
+      }
     .hiddenProject { display: none; }
     .shownProject { display: block;}
+    #mobileMessage {display: none;}
+
+
+    @media (max-width: 850px) {
+      #menuButton {
+        display: block;
+        border-right: solid white;
+        padding-left: 15px;
+        padding-right: 15px;
+        max-width: 25px;
+        float: left;
+      }
+      #headersAndMenus {
+        position: fixed;
+        top: 0;
+        background: #202020;
+        width: 100%;
+        height: 45px;
+      }
+      #projectSelectors {
+        display: none;
+      }
+      #projectSelectors.shown {
+        display:block;
+      }
+      .projectSelector {
+        display:block;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+      }
+      .mainHeader {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        border: white solid;
+        padding-bottom: 0;
+        padding-bottom: 0;
+        line-height: 1.4;
+        display:block;
+      }
+      .headerDash {
+        display: inline;
+      }
+      #mobileMessage {
+        display: inline;
+      }
+      #desktopMessage {
+        display:none;
+      }
+      #allProjectDisplays {
+        margin-top: 60px;
+      }
+
+}
   </style>
   <script>
     var currentProject = 0;
@@ -44,6 +111,8 @@
         projectSelector.addEventListener("mouseout", regularMouse);
         projectSelector.addEventListener("click", psClick);
         }
+      var menuButton = document.getElementById("menuButton");
+      menuButton.addEventListener("click", menuClick);
       }
 
     function fingerMouse() {
@@ -63,6 +132,7 @@
       var currentProjectDiv = document.getElementById(currentProjectName);
       currentProjectDiv.className = "hiddenProject";
       e.target.classList.remove("unselectedSelector");
+      projectSelectors.className = '';
       var projectTab = e.target.id;
       var idnum = projectTab.substr(-1);
       var targetProjectName = "projectDisplay" + idnum;
@@ -71,23 +141,39 @@
       currentProject = idnum;
     }
 
+    function menuClick(e) {
+      var projectSelectors = document.getElementById("projectSelectors");
+      if (projectSelectors.className == "shown") {
+        projectSelectors.className = "";
+      }
+      else {
+        projectSelectors.className = "shown";
+      }
+    }
+
     window.onload = addSelectorEvent;
   </script>
 </head>
 <body>
-  <h1>Jesse Halvorsen</h1>
-  <h1>Portfolio</h1>
+  <div id="headersAndMenus">
+  <h1 class="mainHeader"><span id="menuButton">≡</span>Jesse Halvorsen <span class="headerDash">-</span> Portfolio</h1>
+
   <div class="psLine">
-    <span>Projects: </span>
+
+    <span id="projectSelectors">
+    <!--<span>Projects: </span>-->
     <span class="projectSelector unselectedSelector" id="ps1">Scheduler</span>
     <span class="projectSelector unselectedSelector" id='ps2'>Viking</span>
     <span class="projectSelector unselectedSelector" id='ps3'>Pronunciation</span>
     <span class="projectSelector unselectedSelector" id='ps4'>Quotations</span>
     <span class="projectSelector unselectedSelector" id='ps5'>Tag Deletion Report</span>
     <span class="projectSelector unselectedSelector" id='ps6'>Purchase Journal Report</span>
+  </span>
   </div>
+</div>
+  <div id=allProjectDisplays>
   <div id="projectDisplay0" class="shownProject">
-    <br />Click on a tab to view a project.
+    <span id="desktopMessage">Click on a tab to view a project.</span><span id=mobileMessage>Click the menu button to view a project.</span>
   </div>
 
   <div id="projectDisplay1" class="hiddenProject">
@@ -5616,6 +5702,6 @@
       </pre>
     </figure>
   </div>
-
+</div>
 </body>
 </html>
