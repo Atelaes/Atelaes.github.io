@@ -131,22 +131,41 @@
       document.body.style.cursor = "auto";
       }
 
-    function psClick(e) {
-      var currentProjectNumber = currentProject;
-      var currentProjectSelectorId = "ps" + currentProjectNumber;
-      var currentProjectSelector = document.getElementById(currentProjectSelectorId);
-      if (currentProjectSelector) {currentProjectSelector.classList.add("unselectedSelector");}
-      var currentProjectName = "projectDisplay" + currentProjectNumber;
-      var currentProjectDiv = document.getElementById(currentProjectName);
-      currentProjectDiv.className = "hiddenProject";
-      e.target.classList.remove("unselectedSelector");
-      projectSelectors.className = '';
-      var projectTab = e.target.id;
-      var idnum = projectTab.substr(-1);
-      var targetProjectName = "projectDisplay" + idnum;
-      var targetProjectDiv = document.getElementById(targetProjectName);
-      targetProjectDiv.className = "shownProject";
-      currentProject = idnum;
+      function psClick(e) {
+        var currentProjectNumber = currentProject;
+        var currentProjectSelectorId = "ps" + currentProjectNumber;
+        var currentProjectSelector = document.getElementById(currentProjectSelectorId);
+        if (currentProjectSelector) {currentProjectSelector.classList.add("unselectedSelector");}
+        var currentProjectName = "projectDisplay" + currentProjectNumber;
+        var currentProjectDiv = document.getElementById(currentProjectName);
+        currentProjectDiv.className = "hiddenProject";
+        e.target.classList.remove("unselectedSelector");
+        projectSelectors.className = '';
+        var projectTab = e.target.id;
+        var idnum = projectTab.substr(-1);
+        if (idnum == '7') {
+          getContactReady();
+        }
+        var targetProjectName = "projectDisplay" + idnum;
+        var targetProjectDiv = document.getElementById(targetProjectName);
+        targetProjectDiv.className = "shownProject";
+        currentProject = idnum;
+      }
+
+    function getContactReady() {
+      var characterList = ['A', 'a', 'b', 'c', 'e', 'g', 'i', 'H', 'J', 'k', 'L',
+      'l', 'M', 'm', 'N', 'n', 'o', 'P', 'p', 'r', 'S', 's', 't', 'u', 'v', 'W',
+      '0', '1', '2', '3', '4', '5', '6', '8', '/', '.', '@', '<', '>', ' ', '-'];
+      var contactEncoding = [8, 4, 21, 21, 4, 39, 7, 1, 11, 24, 16, 19, 21, 4,
+        15, 37, 2, 19, 38, 32, 27, 28, 40, 31, 33, 27, 40, 33, 33, 33, 27, 37,
+        2, 19, 38, 1, 22, 4, 11, 1, 4, 21, 36, 5, 13, 1, 6, 11, 35, 3, 16, 13];
+      //Jesse Halvorsen 4320 W 36 1/2 st Apt 305 St. Louis Park MN 55416 612-581-8881 atelaes@gmail.com
+      var contactDiv = document.getElementById('projectDisplay7');
+      var contactInfo = '';
+      for (i=0; i<contactEncoding.length; i++) {
+        contactInfo += characterList[contactEncoding[i]];
+      }
+      contactDiv.innerHTML = contactInfo;
     }
 
     function menuClick(e) {
@@ -176,6 +195,7 @@
     <span class="projectSelector unselectedSelector" id='ps4'>Quotations</span>
     <span class="projectSelector unselectedSelector" id='ps5'>Tag Deletion Report</span>
     <span class="projectSelector unselectedSelector" id='ps6'>Purchase Journal Report</span>
+    <span class="projectSelector unselectedSelector" id='ps7'>Contact Info</span>
   </span>
   </div>
 </div>
@@ -5710,6 +5730,9 @@
         </code>
       </pre>
     </figure>
+  </div>
+  <div id="projectDisplay7" class="shownProject">
+
   </div>
 </div>
 </body>
