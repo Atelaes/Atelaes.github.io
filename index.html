@@ -61,8 +61,8 @@
         position: fixed;
         top: 0;
         background: #202020;
+        height: auto;
         width: 100%;
-        height: 45px;
       }
       #projectSelectors {
         display: none;
@@ -72,12 +72,17 @@
       }
       .projectSelector {
         display:block;
+        background: #202020;
+        padding-left: 0px;
+        line-height: 3;
+        margin-left: 0;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
       }
       .mainHeader {
-        width: 100%;
+        width: 93%;
         max-width: none;
+        font-size: 18px;
         margin-left: 0;
         margin-right: 0;
         border: white solid;
@@ -86,6 +91,9 @@
         line-height: 1.4;
         display:block;
       }
+      .psLine {
+        margin: 0px;
+        }
       .headerDash {
         display: inline;
       }
@@ -180,7 +188,7 @@
     <div><span>Title: </span><span>Home Depot Schedule Writer</span></div>
     <div><span>Language: </span><span>Python</span></div>
     <div><span>Purpose: </span><span>Pulls my personal work schedule from the Home Depot's website, and uploads it to my Google Calendar.</span></div>
-    <div><span>Description: For better or worse, the Home Depot schedule site takes the login information simply as part of the url.  I then use Beautiful Soup to traverse the DOM (finding a DOM manipulator that worked the way I wanted was tricky), and extract the dates.  I convert the dates into the ISO format that Google Calendar likes, and then compare each date on the HD schedule with that same date on my Google Calendar, and add, subtract, or modify as needed.  Google access is done through OAuth.  The program then uses the same Google access to send me an email (from my email address) if there are any changes or errors.  It's attached to a Windows login event, and so runs every time I log on to my computer.</span><span></span></div>
+    <div><span>Description: Logs into the Home Depot online work schedule.  Then uses Beautiful Soup to traverse the DOM (finding a DOM manipulator that worked the way I wanted was tricky), and extracts the dates.  Converts the dates into the ISO format that Google Calendar likes, and then compares each date on the HD schedule with that same date on my Google Calendar, and add, subtract, or modify as needed.  Google access is done through OAuth.  The program then uses the same Google access to send me an email (from my email address) if there are any changes or errors.  It's attached to a Windows login event, and so runs every time I log on to my computer.</span><span></span></div>
     <figure>
     <pre>
 <code>
@@ -520,6 +528,7 @@
     <div><span>Title: </span><span>Viking</span></div>
     <div><span>Language: </span><span>Java</span></div>
     <div><span>Purpose: </span><span>An AI built to play Lux Delux, a computer game with rules similar to Risk.  Coauthored with John Torgerson.</span></div>
+    <div><span>Hosted: </span><a href="https://github.com/JohnMTorgerson/Viking">https://github.com/JohnMTorgerson/Viking</a></div>
     <div><span>Description: </span><span>Has four major activity types: taking over a continent, knocking out an enemy's continent, taking random countries, and eliminating an opponent entirely.
       Develops a plan for nearly all activities that could be performed, and then scores them (basically gain over cost).  Chooses the highest scoring activities that it has the resources for and does them.
     Dynamically prioritizes enemies based on their relative strength.  Reassesses other objectives once it has committed to one (e.g. it tends to be cheaper to take over a continent if you have already breached it).</span></div>
