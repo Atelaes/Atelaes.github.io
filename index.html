@@ -140,6 +140,7 @@
         var currentProjectDiv = document.getElementById(currentProjectName);
         currentProjectDiv.className = "hiddenProject";
         e.target.classList.remove("unselectedSelector");
+        var projectSelectors = document.getElementById("projectSelectors");
         projectSelectors.className = '';
         var projectTab = e.target.id;
         var idnum = projectTab.substr(-1);
@@ -150,7 +151,6 @@
         var targetProjectDiv = document.getElementById(targetProjectName);
         targetProjectDiv.className = "shownProject";
         currentProject = idnum;
-        menuClick('e');
       }
 
     function getContactReady() {
